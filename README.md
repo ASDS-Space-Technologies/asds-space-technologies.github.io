@@ -1,2 +1,4 @@
 # asds-space-technologies.github.io
-Code for our website.
+We make cool space stuff. :)
+Website is under contruction please check back later.
+Contact: info@asds.tech
