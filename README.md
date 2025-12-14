@@ -1,4 +1,4 @@
-# Advanced Space Dynamics Solutions Space Technologies Limited Liability Company
+# ASDS Space Technologies Ltd.
 We make cool space stuff. :)
 
 Website is under contruction please check back later.
