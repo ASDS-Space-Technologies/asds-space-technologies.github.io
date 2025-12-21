@@ -1,0 +1,9 @@
+node_modules
+.astro
+dist
+.env
+.env.*
+.vscode
+.DS_Store
+preview.bat
+template
