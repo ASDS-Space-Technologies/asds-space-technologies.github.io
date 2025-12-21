@@ -1,0 +1,156 @@
+---
+const tabs = [
+  {
+    id: 'overview',
+    label: 'Overview',
+    title: 'System scope',
+    text: 'What the TunaCan module packs inside the 90 mm volume and the compliance targets it unlocks for CubeSat buses.',
+    bullet: [
+      'Volume & mass: tuna-can form factor, 700 g nominal mass',
+      'Deorbit target: less than 12 months from 550 km circular',
+      'Telemetry: redundant CAN or UART heartbeat with error states'
+    ]
+  },
+  {
+    id: 'instruments',
+    label: 'Mechanisms',
+    title: 'Deployment hardware',
+    text: 'Twin sail cartridges, tether spool, and release actuators coordinated by the onboard controller.',
+    bullet: [
+      'Carbon sail sheets with composite booms and end-mass reefing',
+      'Electrodynamic tether spool plus optional plasma brake stator',
+      'Shape-memory alloy release with mechanical latch backup'
+    ]
+  },
+  {
+    id: 'campaign',
+    label: 'Ops',
+    title: 'Flight sequence',
+    text: 'Integration through reentry monitoring for TunaCan equipped CubeSats.',
+    bullet: [
+      'Phase 1: bus fit check, umbilical, and electrical checkout',
+      'Phase 2: on-orbit inhibition removal and deployment command',
+      'Phase 3: drag plus plasma brake control to target reentry'
+    ]
+  }
+];
+
+const instanceId = `experiment-tabs-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<section aria-labelledby="experiment-tabs-title" class="experiment-tabs" data-experiment-tabs={instanceId}>
+  <div class="tabs-surface">
+    <div class="tabs-header">
+      <p class="text-white/70 text-sm">Tap a phase to explore TunaCan module details.</p>
+    </div>
+
+    <div role="tablist" aria-label="Module focus" class="tabs-list" data-tablist>
+      {tabs.map((tab, idx) => (
+        <button
+          type="button"
+          role="tab"
+          data-tab={tab.id}
+          aria-selected={idx === 0 ? 'true' : 'false'}
+          aria-controls={`panel-${tab.id}`}
+          class={`tab-trigger${idx === 0 ? ' is-active' : ''}`}
+          tabindex={idx === 0 ? 0 : -1}
+        >
+          <span class="tab-index">{String(idx + 1).padStart(2, '0')}</span>
+          <span class="tab-label">{tab.label}</span>
+        </button>
+      ))}
+    </div>
+
+    <div class="tab-panels" data-panels>
+      {tabs.map((tab, idx) => (
+        <article
+          id={`panel-${tab.id}`}
+          data-panel={tab.id}
+          role="tabpanel"
+          aria-labelledby={`tab-${tab.id}`}
+          class={`tab-panel${idx === 0 ? ' is-active' : ''}`}
+          tabindex="0"
+        >
+          <header>
+            <h4 class="panel-title">{tab.title}</h4>
+            <p class="panel-text">{tab.text}</p>
+          </header>
+          <ul class="panel-list">
+            {tab.bullet.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script
+  is:inline
+  client:load
+  define:vars={{ instanceId }}
+>
+  const host = document.querySelector(`[data-experiment-tabs="${instanceId}"]`);
+  if (!host || host.dataset.hydrated === 'true') {
+    if (!host) {
+      console.warn('ExperimentTabs: host element not found');
+    }
+  } else {
+    host.dataset.hydrated = 'true';
+    const tabButtons = Array.from(host.querySelectorAll('.tab-trigger'));
+    const panels = Array.from(host.querySelectorAll('.tab-panel'));
+
+    const setActive = (id) => {
+      if (!id) return;
+      tabButtons.forEach((btn) => {
+        const match = btn.dataset.tab === id;
+        btn.setAttribute('aria-selected', match ? 'true' : 'false');
+        btn.tabIndex = match ? 0 : -1;
+        btn.classList.toggle('is-active', match);
+      });
+
+      panels.forEach((panel) => {
+        const match = panel.dataset.panel === id;
+        panel.classList.toggle('is-active', match);
+        if (match) {
+          panel.removeAttribute('hidden');
+        } else {
+          panel.setAttribute('hidden', 'true');
+        }
+      });
+    };
+
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setActive(btn.dataset.tab);
+        btn.focus();
+      });
+
+      btn.addEventListener('keydown', (event) => {
+        const currentIndex = tabButtons.indexOf(btn);
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+          event.preventDefault();
+          const next = tabButtons[(currentIndex + 1) % tabButtons.length];
+          next.click();
+          next.focus();
+        }
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+          event.preventDefault();
+          const prev = tabButtons[(currentIndex - 1 + tabButtons.length) % tabButtons.length];
+          prev.click();
+          prev.focus();
+        }
+      });
+    });
+
+    if (tabButtons[0]?.dataset.tab) {
+      setActive(tabButtons[0].dataset.tab);
+    }
+  }
+</script>
+
+
+
+
+

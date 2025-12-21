@@ -1,0 +1,163 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import TimelineItem from '@/components/TimelineItem.astro';
+import StarsBG from '@/components/StarsBG.astro';
+import ExperimentTabs from '@/components/ExperimentTabs.astro';
+import { Image } from 'astro:assets';
+import heroImg from '@/assets/hero.jpg';
+
+const meta = {
+  title: 'ASDS Space Technologies Ltd.',
+  description: 'Space Technology company developing small dragsail solution'
+};
+
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <Header />
+
+  <main id="content" class="scroll-stage">
+      <section
+  id="company-details"
+  class="panel fade-section min-h-[calc(100vh-4rem)]"
+  data-animate
+  data-slide="90px"
+>
+  <div class="panel-content">
+    <div class="relative isolate mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+      <StarsBG />
+
+      <div class="relative z-10">
+        <h2 class="text-3xl sm:text-4xl font-semibold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple">
+          Company information
+        </h2>
+
+        <div class="card overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <tbody class="divide-y divide-space-line">
+              <tr>
+                <th class="w-1/3 px-6 py-4 text-white/60 font-medium">
+                  Company name
+                </th>
+                <td class="px-6 py-4 text-white">
+                  ASDS Space Technologies Ltd.
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  Executive officer
+                </th>
+                <td class="px-6 py-4 text-white">
+                  FEJES Dániel
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  E-mail
+                </th>
+                <td class="px-6 py-4 text-white">
+                  <a
+                    href="mailto:info@asds.tech"
+                    class="text-neon-cyan hover:underline"
+                  >
+                    info@asds.tech
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  Registered office
+                </th>
+                <td class="px-6 py-4 text-white">
+                  H-2310 Szigetszentmiklós, Hungary,<br />
+                  Őz köz 6. B. ép.
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  Hungarian reg. number
+                </th>
+                <td class="px-6 py-4 text-white">
+                  13-09-244178
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  HU VAT number
+                </th>
+                <td class="px-6 py-4 text-white">
+                  32946918-2-13
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  EU VAT number
+                </th>
+                <td class="px-6 py-4 text-white">
+                  HU32946918
+
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+              Bank
+                </th>
+                <td class="px-6 py-4 text-white">
+              Erste Bank Hungary
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  Bank account (HUF)
+                </th>
+                <td class="px-6 py-4 text-white">
+                  11600006-00000002-04471277
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  IBAN (EUR)
+                </th>
+                <td class="px-6 py-4 text-white break-all">
+                  HU91 1160 0006 0000 0002 0447 1284
+                </td>
+              </tr>
+
+              <tr>
+                <th class="px-6 py-4 text-white/60 font-medium">
+                  SWIFT / BIC
+                </th>
+                <td class="px-6 py-4 text-white">
+                  GIBAHUHB
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-4 text-sm text-white/50">
+          Official company and banking information for contractual and
+          invoicing purposes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+

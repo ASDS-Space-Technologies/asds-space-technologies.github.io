@@ -1,0 +1,11 @@
+---
+const { when, title, text } = Astro.props as { when: string; title: string; text: string };
+---
+<li class="relative pl-8">
+  <div class="absolute left-2 top-1.5 h-3 w-3 rounded-full bg-neon-blue shadow-glow"></div>
+  <div class="card p-4">
+    <p class="text-xs text-white/60">{when}</p>
+    <h4 class="mt-1 font-semibold">{title}</h4>
+    <p class="mt-2 text-white/80">{text}</p>
+  </div>
+</li>

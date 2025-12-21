@@ -1,0 +1,7 @@
+﻿---
+const { label = 'Link', href = '#', sr = label } = Astro.props as { label?: string; href?: string; sr?: string };
+---
+<a href={href} target="_blank" rel="noopener" class="p-2 rounded-lg hover:bg-white/10 border border-space-line/50 inline-flex items-center gap-2">
+  <span class="text-white/80">{label}</span>
+  <span class="sr-only">{sr}</span>
+</a>

@@ -1,0 +1,43 @@
+---
+const LINKS = [
+  // { href: "#experiment", label: "Experiment" },
+  { href: "/#team", label: "Team" },
+  { href: "/#heritage", label: "Heritage" },
+];
+
+const base = import.meta.env.BASE_URL?.replace(/\/$/, "") ?? "";
+const LOGO_SRC = `${base}/logo.png`;
+---
+
+<header data-header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-black/30 border-b border-space-line">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+        <img
+          src={LOGO_SRC}
+          alt="ASDS Space Technologies Ltd. logo"
+          width="240"
+          height="64"
+          class="h-16 w-auto"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        {LINKS.map(l => (
+          <a class="nav-link" href={l.href}>{l.label}</a>
+        ))}
+        <a href="/#contact" class="rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 border border-space-line transition">Get in touch</a>
+      </div>
+      <details class="md:hidden">
+        <summary class="cursor-pointer px-3 py-2 rounded-lg hover:bg-white/10">Menu</summary>
+        <div class="absolute right-4 mt-2 w-48 card p-2 flex flex-col">
+          {LINKS.map(l => (
+            <a class="px-3 py-2 rounded-lg hover:bg-white/10" href={l.href}>{l.label}</a>
+          ))}
+          <a class="px-3 py-2 rounded-lg hover:bg-white/10" href="#contact">Get in touch</a>
+        </div>
+      </details>
+    </div>
+  </nav>
+</header>

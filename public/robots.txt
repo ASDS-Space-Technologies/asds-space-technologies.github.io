@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://asds-space-technologies.github.io/sitemap-index.xml
+
