@@ -44,10 +44,10 @@ body {
 
 [data-animate] {
   opacity: 0;
-  transform: translate3d(0, var(--slide-distance, 120px), 0) scale(0.985);
+  transform: translate3d(0, var(--slide-distance, 10px), 0) scale(0.985);
   transition:
-    transform 900ms var(--rise-ease, cubic-bezier(0.16, 1, 0.3, 1)) var(--sr-delay, 0ms),
-    opacity 760ms var(--rise-ease, cubic-bezier(0.16, 1, 0.3, 1)) var(--sr-delay, 0ms);
+    transform 500ms var(--rise-ease, cubic-bezier(0.16, 1, 0.3, 1)) var(--sr-delay, 0ms),
+    opacity 250ms var(--rise-ease, cubic-bezier(0.16, 1, 0.3, 1)) var(--sr-delay, 0ms);
   will-change: opacity, transform;
 }
 
@@ -78,13 +78,12 @@ body {
   padding-block: clamp(4.75rem, 7vw, 7.5rem);
   scroll-margin-top: clamp(4.5rem, 8vw, 5.5rem);
   isolation: isolate;
-  opacity: 0;
-  transform: translateY(48px);
-  transition:
-    opacity 540ms ease,
-    transform 540ms ease;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
+/*
 .panel.is-visible {
   opacity: 0.45;
   transform: translateY(0);
@@ -98,6 +97,7 @@ body {
   opacity: 0;
   transform: translateY(-24px);
 }
+*/
 
 .panel-content {
   position: relative;
@@ -232,3 +232,38 @@ body {
     transform: none !important;
   }
 }
+
+.space-bullets {
+  list-style: none;
+  counter-reset: space;
+  padding-left: 1.25rem; /* keeps text aligned like list-inside */
+}
+
+.space-bullets li {
+  counter-increment: space;
+}
+
+.space-bullets li::marker {
+  content: "";
+}
+
+/* Emoji rotation */
+.space-bullets li::before {
+  position: absolute;
+  margin-left: -1.25rem;
+  font-size: 1em;
+}
+
+.space-bullets li:nth-child(4n + 1)::before {
+  content: "🚀";
+}
+.space-bullets li:nth-child(4n + 2)::before {
+  content: "🛰️";
+}
+.space-bullets li:nth-child(4n + 3)::before {
+  content: "⭐";
+}
+.space-bullets li:nth-child(4n)::before {
+  content: "☄️";
+}
+
