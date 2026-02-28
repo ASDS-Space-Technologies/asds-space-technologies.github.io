@@ -30,15 +30,38 @@ const LOGO_SRC = `${base}/logo.png`;
         ))}
         <a href="/#contact" class="rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 border border-space-line transition">Get in touch</a>
       </div>
-      <details class="md:hidden">
-        <summary class="cursor-pointer px-3 py-2 rounded-lg hover:bg-white/10">Menu</summary>
-        <div class="absolute right-4 mt-2 w-48 card p-2 flex flex-col">
-          {LINKS.map(l => (
-            <a class="px-3 py-2 rounded-lg hover:bg-white/10" href={l.href}>{l.label}</a>
-          ))}
-          <a class="px-3 py-2 rounded-lg hover:bg-white/10" href="#contact">Get in touch</a>
-        </div>
-      </details>
+        <details class="md:hidden relative group" id="mobile-menu">
+            <summary class="list-none cursor-pointer px-3 py-2 rounded-lg hover:bg-white/10 flex items-center justify-center outline-none">
+                <div class="w-6 h-5 relative flex flex-col justify-center items-center">
+                    <span class="absolute w-6 h-0.5 bg-white transition-all duration-300 translate-y-[-8px] group-open:translate-y-0 group-open:rotate-45"></span>
+                    <span class="absolute w-6 h-0.5 bg-white transition-all duration-300 group-open:opacity-0"></span>
+                    <span class="absolute w-6 h-0.5 bg-white transition-all duration-300 translate-y-[8px] group-open:translate-y-0 group-open:-rotate-45"></span>
+                </div>
+            </summary>
+            <div class="mobile-menu-dropdown">
+                {LINKS.map(l => (
+                <a class="px-3 py-2 rounded-lg hover:bg-white/10" href={l.href}>{l.label}</a>
+                ))}
+                <a class="px-3 py-2 rounded-lg hover:bg-white/10" href="#contact">Get in touch</a>
+            </div>
+        </details>
     </div>
   </nav>
 </header>
+
+<script>
+  const menu = document.getElementById('mobile-menu') as HTMLDetailsElement;
+
+  document.addEventListener('click', (event) => {
+    if (menu?.open && !menu.contains(event.target as Node)) {
+      menu.open = false;
+    }
+  });
+
+  const menuLinks = document.querySelectorAll('#mobile-menu a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (menu) menu.open = false;
+    });
+  });
+</script>
