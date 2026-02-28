@@ -1,9 +1,9 @@
-node_modules
-.astro
-dist
+node_modules/
+.astro/
+dist/
 .env
 .env.*
-.vscode
-.DS_Store
+.vscode/
+.DS_Store/
 preview.bat
-template
+template/

@@ -267,3 +267,35 @@ body {
   content: "☄️";
 }
 
+.partners-grid {
+  @apply mt-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center justify-items-center;
+}
+
+.partner-card-wrapper {
+  @apply transition-all duration-300 transform hover:scale-105;
+}
+
+.partner-card {
+  @apply p-6 flex items-center justify-center bg-white/5 border border-white/10 transition-all rounded-2xl;
+}
+
+.group:hover .partner-card {
+  @apply border-neon-blue/50 shadow-glow;
+}
+
+.col-span-2-md {
+  @apply md:col-span-2;
+}
+
+.partner-logo {
+  @apply w-full h-24 object-contain opacity-50 grayscale transition-all duration-300;
+}
+
+.partner-logo.is-wide {
+  @apply h-24 w-auto scale-125;
+}
+
+.group:hover .partner-logo {
+  @apply opacity-100 grayscale-0;
+}
+
