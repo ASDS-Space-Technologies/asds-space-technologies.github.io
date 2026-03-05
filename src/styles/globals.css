@@ -247,10 +247,10 @@ body {
   content: "";
 }
 
-/* Emoji rotation */
 .space-bullets li::before {
-  position: absolute;
-  margin-left: -1.25rem;
+  display: inline-block;
+  width: 1.5rem;
+  margin-left: -1.5rem;
   font-size: 1em;
 }
 
